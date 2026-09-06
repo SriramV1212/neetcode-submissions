@@ -1,0 +1,24 @@
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        if len(nums) == 1:
+            return nums[0]
+
+        dp = [-1] * len(nums)
+        dp[0] = nums[0]
+        dp[1] = max(nums[0], nums[1])
+
+        def recurse(house):
+            if dp[house] != -1:
+                return dp[house]
+
+            if house == 0:
+                return dp[house]
+
+            if house == 1:
+                return dp[house]
+
+            dp[house] = max(recurse(house-1), nums[house] + recurse(house-2))
+
+            return dp[house]
+
+        return recurse(len(nums)-1)
