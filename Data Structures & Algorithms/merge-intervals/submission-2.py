@@ -1,0 +1,32 @@
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+
+        intervals.sort()
+
+        result = []
+
+        for i in range(len(intervals)):
+            if not result or intervals[i][0] > result[-1][1]:
+                result.append(intervals[i])
+            elif intervals[i][0] <= result[-1][1]:
+                result[-1][0] = min(result[-1][0], intervals[i][0])
+                result[-1][1] = max(result[-1][1], intervals[i][1])
+
+        return result
+
+
+
+                
+
+                
+            
+
+
+            
+            
+            
+
+
+
+        
+        
